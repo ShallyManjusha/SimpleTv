@@ -157,7 +157,7 @@ def filter_files(json_response,files):
             print("In elsif")
             for i in files:
                 i=json.loads(i[0])
-                i["Programs"]=list(filter(lambda x:fuzz.token_set_ratio(x["ProgramTitle"].lower(),json_response["program"].lower().strip())>=70,i["Programs"]))
+                i["Programs"]=list(filter(lambda x:fuzz.ratio(x["ProgramTitle"].lower(),json_response["program"].lower().strip())>=75,i["Programs"]))
                 print(i["Programs"])
                 files_new.append(i)
     elif "channel" in json_response and  json_response["channel"]!="":
